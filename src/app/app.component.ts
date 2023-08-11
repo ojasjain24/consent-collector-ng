@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'consent-collector-ng';
+  constructor(
+		public router: Router
+	) {}
+  
+  open() {
+		this.router.navigate([`/consentcollector`]);
+	}
 }

@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+
+.container .multiselect-dropdown .dropdown-btn {
+    display: inline-block !important;
+    width: 100% !important;
+    max-lines: 1;
+    overflow: hidden;
+    padding: 6px 12px !important;
+    margin-bottom: 0 !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1.1 !important;
+    border: 0 solid !important;
+    text-align: left !important;
+    vertical-align: middle !important;
+    cursor: pointer !important;
+    background-image: none !important;
+    border-radius: 4px !important;
+  
+    .selected-item {
+      border: 1px solid #0b457f !important;
+      background: #0b457f !important;
+      float: left;
+    }
+  }

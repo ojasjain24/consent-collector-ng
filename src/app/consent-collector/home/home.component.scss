@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap");
+
+* {
+  font-family: Epilogue, sans-serif;
+}
+
+.container {
+  box-shadow: 0 0 3px 0 gray !important;
+  max-width: 900px;
+}
+
+img {
+  width: 17%;
+}
+
+h1 {
+  margin-top: 15px;
+  font-size: 1.5rem;
+}
+
+.input-group-text {
+  font-size: 12px;
+  padding: 10px;
+}
+
+.content {
+  background: #e6e2c8;
+  max-width: 960px;
+  min-height: 3.75em;
+  margin: 2em auto;
+  padding: 1.25em;
+  border-radius: 0.313em;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 50%);
+  line-height: 1.5em;
+  color: #292929;
+}
+
+.ribbon {
+  position: relative;
+  padding: 10px 0.5em;
+  font-size: 16px;
+  margin: 0 0 0 -0.825em;
+  line-height: 1;
+  color: #fff;
+  border-radius: 0 0.156em 0.156em 0;
+  background: #853d0c;
+  background-image: linear-gradient(to right, #853d0c, #96c1a6);
+  box-shadow: -1px 2px 3px rgb(0 0 0 / 50%);
+}
+
+.ribbon::before,
+.ribbon::after {
+  position: absolute;
+  content: "";
+  display: block;
+}
+
+.ribbon::before {
+  width: 0.469em;
+  height: 119%;
+  padding: 0 0 0.438em;
+  top: 0;
+  left: -0.469em;
+  background: #853d0c;
+  border-radius: 0.313em 0 0 0.313em;
+}
+
+.ribbon::after {
+  width: 0.313em;
+  height: 0.313em;
+  background: rgb(0 0 0 / 35%);
+  bottom: -0.313em;
+  left: -0.313em;
+  border-radius: 0.313em 0 0 0.313em;
+  box-shadow: inset -1px 2px 2px rgb(0 0 0 / 30%);
+}
+
+.aip-details {
+  width: 35%;
+}
+
+.btn-group {
+  margin-top: 15px;
+}
+
+.asterisk {
+  color: red;
+  padding-right: 5px;
+  padding-left: 5px;
+  font-size: 12px;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  font-size: 10px;
+  z-index: 1;
+  width: 100px;
+  color: white;
+  background-color: #192733;
+  padding: 5px;
+}
+
+.hover-text:hover .tooltip-text {
+  visibility: visible;
+}
+
+.top {
+  top: -40px;
+  left: -50%;
+}
+
+.bottom {
+  top: 25px;
+  left: -10%;
+}
+
+.left {
+  top: -8px;
+  right: 120%;
+}
+
+.right {
+  top: -8px;
+  left: 120%;
+}
+
+.hover-text {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.vscomp-toggle-button {
+  padding: 7px 30px 14px 10px !important;
+  box-shadow: 0 0 0 !important;
+}
+
+.submit {
+  background-color: #0a9;
+  border: 0;
+}
+
+.vscomp-ele {
+  display: inline-block;
+  max-width: 100% !important;
+  width: 75% !important;
+}
+
+.form-select {
+  background-image: none;
+}
+
+label {
+  font-weight: 700;
+  text-align: right;
+}
+
+.purpose-text {
+  white-space: pre-line;
+}
+
+.instr {
+  margin: 25px;
+  padding: 10px;
+}
+
+#command {
+  width: fit-content;
+  font-family: Inconsolata, monospace;
+  padding: 5px 15px;
+  color: azure;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.control-buttons {
+  /* background-color: red; */
+  width: auto;
+  justify-content: space-between;
+  align-items: center;
+  align-content: space-around;
+  align-self: center;
+}
+
+input::file-selector-button {
+  background-color: #0a9;
+  border: 0;
+  color: white;
+  display: inline-flexbox;
+
+  /* margin-left:83%;overflow: hidden; */
+  line-height: 1.5;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+}

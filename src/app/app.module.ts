@@ -1,16 +1,23 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { ConsentCollectorModule } from './consent-collector/consent-collector.module';
+
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
+  imports: [		
+    RouterModule.forChild([]),
+    AppRoutingModule,
+    NgbModule,
     BrowserModule,
-    AppRoutingModule
+    ConsentCollectorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

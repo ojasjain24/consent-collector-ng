@@ -1,0 +1,363 @@
+<div class="container mt-3">
+	<form [formGroup]="consentCollectorArtifact" class="consent">
+		<div class="row"></div>
+		<div class="row aip-details w-100 mt-4">
+			<div class="col-lg-6 col-12">
+				<h1 class="ribbon">AIP Details</h1>
+			</div>
+			<div
+				class="cols justify-content-lg-end d-flex"
+				style="font-size: 12px"
+			>
+				<span class="asterisk">* Required Fields</span>
+			</div>
+		</div>
+		<div class="row mt-4">
+			<div class="col-lg-6 col-12">
+				<div class="input-group mt-4">
+					<span class="input-group-text">
+						AIP Name
+						<span class="asterisk">*</span>
+					</span>
+					<input
+						autofocus
+						formControlName="aipName"
+						type="text"
+						class="form-control"
+						id="aipName"
+					/>
+				</div>
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.aipName.touched || submitClicked) && this.consentCollectorArtifact.controls.aipName.status === 'INVALID' || this.consentCollectorArtifact.controls.aipName.value === ''"
+					class="asterisk"
+					>This Field Can't be Empty</span
+				>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.aipName.touched || submitClicked) && this.consentCollectorArtifact.controls.aipName.status === 'INVALID' && this.consentCollectorArtifact.controls.aipName.value !== ''"
+					class="asterisk"
+					>Invalid</span
+				>
+			</div>
+
+			<div class="col-lg-6 col-12">
+				<!-- <div class="input-group mt-4">
+                    <span class="input-group-text hover-text m-0">
+                        AIP Id
+                        <span class="asterisk">*</span>
+                    </span>
+                    <input formControlName = "" type="text" class="form-control" id="aipId" oninput="validateUUID()">
+                    <span id="uuidValidationMessage"></span>
+
+                </div> -->
+
+				<div class="input-group mt-4">
+					<span class="input-group-text">
+						AIP Email
+						<span class="asterisk">*</span>
+					</span>
+					<input
+						formControlName="aipEmail"
+						type="email"
+						class="form-control emails"
+						id="aipEmail"
+						pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+					/>
+				</div>
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.aipEmail.touched || submitClicked) && this.consentCollectorArtifact.controls.aipEmail.value === ''"
+					class="asterisk"
+					>This field can't be empty</span
+				>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.aipEmail.touched || submitClicked) && this.consentCollectorArtifact.controls.aipEmail.status === 'INVALID' && this.consentCollectorArtifact.controls.aipEmail.value !== ''"
+					class="asterisk"
+					>Email address not valid</span
+				>
+			</div>
+
+			<div class="row aip-details w-100 mt-4">
+				<div class="col-lg-6 col-12">
+					<h1 class="ribbon">Data Principal Details</h1>
+				</div>
+				<div
+					class="cols justify-content-lg-end d-flex"
+					style="font-size: 12px"
+				>
+					<span class="asterisk">*Required fields</span>
+				</div>
+			</div>
+			<div class="col-lg-6 col-12">
+				<div class="input-group mt-4">
+					<span class="input-group-text">
+						Data Principal Id
+						<span class="asterisk">*</span>
+					</span>
+					<input
+						formControlName="dpID"
+						type="text"
+						class="form-control"
+						id="dpID"
+					/>
+				</div>
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.dpID.touched || submitClicked) && this.consentCollectorArtifact.controls.dpID.value === ''"
+					class="asterisk"
+					>This field can't be empty</span
+				>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.dpID.touched || submitClicked) && this.consentCollectorArtifact.controls.dpID.status === 'INVALID' && this.consentCollectorArtifact.controls.dpID.value !== ''"
+					class="asterisk"
+					>Invalid</span
+				>
+			</div>
+			<div class="col-lg-6 col-12">
+				<div class="input-group mt-4">
+					<span class="input-group-text">
+						DataPrincipal Name
+						<span class="asterisk">*</span>
+					</span>
+					<input
+						formControlName="dpName"
+						type="text"
+						class="form-control"
+						id="dpName"
+					/>
+				</div>
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.dpName.touched || submitClicked) && this.consentCollectorArtifact.controls.dpName.value === ''"
+					class="asterisk"
+					>This field can't be empty</span
+				>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.dpName.touched || submitClicked) && this.consentCollectorArtifact.controls.dpName.status === 'INVALID' && this.consentCollectorArtifact.controls.dpName.value !== ''"
+					class="asterisk"
+					>Invalid</span
+				>
+			</div>
+			<div class="row aip-details w-100 mt-4">
+				<div class="col-lg-6 col-12">
+					<h1 class="ribbon">Artifact Details</h1>
+				</div>
+				<div
+					class="cols justify-content-lg-end d-flex"
+					style="font-size: 12px"
+				>
+					<span class="asterisk">* Required Fields</span>
+				</div>
+			</div>
+			<div class="col-lg-6 col-12">
+				<div class="input-group mt-4">
+					<span class="input-group-text">
+						Artifact Expiry
+						<span class="asterisk">*</span>
+					</span>
+					<input
+						formControlName="dateInput"
+						type="date"
+						class="form-control"
+						onkeydown="return false"
+						id="dateInput"
+						required
+					/>
+				</div>
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.dateInput.touched || submitClicked) && this.consentCollectorArtifact.controls.dateInput.value === ''"
+					class="asterisk"
+					>This field can't be empty</span
+				>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.dateInput.touched || submitClicked) && this.consentCollectorArtifact.controls.dateInput.status === 'INVALID' && this.consentCollectorArtifact.controls.dateInput.value !== ''"
+					class="asterisk"
+					>Invalid</span
+				>
+			</div>
+
+			<div class="col-lg-6 col-12">
+				<div class="input-group mt-4">
+					<span class="input-group-text">
+						Item Id
+						<span class="asterisk">*</span>
+					</span>
+					<input
+						formControlName="itemInp"
+						type="text"
+						class="form-control"
+						id="itemInp"
+					/>
+				</div>
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.itemInp.touched || submitClicked) && this.consentCollectorArtifact.controls.itemInp.value === ''"
+					class="asterisk"
+					>This field can't be empty</span
+				>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.itemInp.touched || submitClicked) && this.consentCollectorArtifact.controls.itemInp.status === 'INVALID' && this.consentCollectorArtifact.controls.itemInp.value !== ''"
+					class="asterisk"
+					>Invalid</span
+				>
+			</div>
+			<div class="col-lg-6 col-12">
+				<div class="input-group mt-4">
+					<span class="input-group-text">Item Type</span>
+					<ng-multiselect-dropdown
+						class="form-control"
+						[placeholder]="'Select Item Type'"
+						[settings]="itemTypeDropdownSettings"
+						[data]="itemTypeDropdownList"
+						id="itemType"
+						formControlName="itemType"
+					>
+					</ng-multiselect-dropdown>
+				</div>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.itemType.touched || submitClicked) && this.consentCollectorArtifact.controls.itemType.value === ''"
+					class="asterisk"
+					>This field can't be empty</span
+				>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.itemType.touched || submitClicked) && this.consentCollectorArtifact.controls.itemType.status === 'INVALID' && this.consentCollectorArtifact.controls.itemType.value !== ''"
+					class="asterisk"
+					>Invalid</span
+				>
+			</div>
+			<div class="col-lg-6 col-12">
+				<div class="input-group mt-4">
+					<span class="input-group-text">
+						Purposes
+						<span class="asterisk">*</span>
+					</span>
+
+					<ng-multiselect-dropdown
+						class="form-control"
+						[placeholder]="'Select Purposes'"
+						[settings]="purposeDropdownSettings"
+						[data]="purposeDropdownList"
+						id="purpose"
+						formControlName="purpose"
+					>
+					</ng-multiselect-dropdown>
+				</div>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.purpose.touched || submitClicked) && this.consentCollectorArtifact.controls.purpose.value === ''"
+					class="asterisk"
+					>This field can't be empty</span
+				>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.purpose.touched || submitClicked) && this.consentCollectorArtifact.controls.purpose.status === 'INVALID' && this.consentCollectorArtifact.controls.purpose.value !== ''"
+					class="asterisk"
+					>Invalid</span
+				>
+			</div>
+		</div>
+
+		<div class="col-lg-6 col-12"></div>
+		<!-- <div class="row aip-details mt-4 w-100">
+            <div class="col-12">
+                <h1 class="ribbon">Additional Details (optional)</h1>
+            </div>
+            <div class="cols justify-content-lg-end d-flex" style="font-size: 12px;">
+                <span class="asterisk">NOTE: Either fill in all the AIU fields or don't fill any</span>
+            </div>
+            <div class="col-6 justify-content-lg-end d-flex" style="font-size: 12px;">
+                <span class="asterisk">* Required Fields</span>
+            </div> 
+        </div> -->
+
+		<div class="row aip-details w-100 mt-4">
+			<div class="col-lg-6 col-12">
+				<h1 class="ribbon">AIU Details (optional)</h1>
+			</div>
+			<div
+				class="cols justify-content-lg-end d-flex"
+				style="font-size: 12px"
+			>
+				<span class="asterisk"
+					>NOTE: Either fill in all the AIU fields or don't fill
+					any</span
+				>
+			</div>
+		</div>
+		<div class="row mt-4">
+			<!-- <div class="col-lg-6 col-12">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        AIU Id
+                    </span>
+                    <input formControlName = "" type="text" class="form-control" id="aiuId" onchange="validateAIUID()">
+
+                </div>
+                <span id="AIUIDValidationMessage"></span>
+            </div> -->
+			<div class="col-lg-6 col-12">
+				<div class="input-group mt-4">
+					<span class="input-group-text"> AIU Name </span>
+					<input
+						formControlName="aiuName"
+						type="text"
+						class="form-control"
+						id="aiuName"
+					/>
+				</div>
+			</div>
+			<div class="col-lg-6 col-12">
+				<div class="input-group mt-4">
+					<span class="input-group-text"> AIU Email </span>
+					<input
+						formControlName="aiuEmail"
+						type="email"
+						class="form-control emails"
+						id="aiuEmail"
+						pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+					/>
+				</div>
+
+				<span
+					*ngIf="(this.consentCollectorArtifact.controls.aiuEmail.touched || submitClicked) && this.consentCollectorArtifact.controls.aiuEmail.status === 'INVALID' && this.consentCollectorArtifact.controls.aiuEmail.value !== ''"
+					class="asterisk"
+					>Email address not valid</span
+				>
+			</div>
+
+			<span
+				*ngIf="(this.consentCollectorArtifact.controls.aiuName.value === '' && this.consentCollectorArtifact.controls.aiuEmail.value !== '')||(this.consentCollectorArtifact.controls.aiuName.value !== '' && this.consentCollectorArtifact.controls.aiuEmail.value === '')"
+				class="asterisk"
+				>Either fill both AIU Name and AIU Email or fill none</span
+			>
+
+			<span
+				*ngIf="submitClicked && !validate()"
+				class="asterisk text-center mt-2"
+				>Please fill all the details correctly before submitting</span
+			>
+			<div class="col-12 text-center mb-4">
+				<button
+					class="btn btn-primary w-25 mt-4 submit py-3"
+					id="lynk"
+					type="submit"
+					(click)="validateForm()"
+				>
+					SUBMIT
+				</button>
+			</div>
+			<div class="row"></div>
+		</div>
+		<script src="js/virtual-select.min.js"></script>
+		<script>
+			VirtualSelect.init({
+				ele: 'select'
+			});
+		</script>
+		<script src="js/script.js"></script>
+		<script src="js/sumScript.js"></script>
+	</form>
+</div>
