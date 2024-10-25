@@ -38,6 +38,7 @@ span {
   width: 100%;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
 
   /* align-content: space-around; */
 
@@ -118,4 +119,13 @@ input::file-selector-button {
 //   }
 label {
   font-weight: bold;
+}
+
+.disabled::file-selector-button{
+  background-color: gray;
+  pointer-events: none;
+}
+.disabled{
+  pointer-events: none;
+  
 }

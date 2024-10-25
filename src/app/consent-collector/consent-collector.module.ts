@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SummaryComponent } from './summary/summary.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
 	declarations: [HomeComponent, SummaryComponent],
@@ -13,7 +14,8 @@ import { SummaryComponent } from './summary/summary.component';
 		FormsModule,
 		ReactiveFormsModule,
 		NgMultiSelectDropDownModule.forRoot(),
-		ConsentCollectorRoutingModule
+		ConsentCollectorRoutingModule,
+		HttpClientModule
 	]
 })
 export class ConsentCollectorModule {}

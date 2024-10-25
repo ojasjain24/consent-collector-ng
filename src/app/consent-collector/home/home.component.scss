@@ -194,3 +194,37 @@ input::file-selector-button {
   padding: 0.375rem 0.75rem;
   border-radius: 0.25rem;
 }
+
+.tabs-container {
+	width: 100%;
+  }
+  
+  .tabs {
+	display: flex;
+	border-bottom: 1px solid #ccc;
+  justify-content: center;
+  }
+  
+  .tab {
+    width: 200px;
+	padding: 10px;
+	cursor: pointer;
+	background-color: #f0f0f0;
+	border: none;
+	outline: none;
+  }
+  
+  .tab:hover {
+	background-color: #e0e0e0;
+  }
+  
+  .tab.active {
+	background-color: #fff;
+	font-weight: bold;
+	border-bottom: 2px solid #0a9;
+  }
+  
+  .tab-content {
+	padding-top: 20px;
+	border-top: none;
+  }

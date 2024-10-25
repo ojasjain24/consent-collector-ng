@@ -6,15 +6,11 @@ import { ConsentCollectorModule } from './consent-collector/consent-collector.mo
 const routes: Routes = [
   {
 		path: '',
-		children: [
-			{
-				path: 'consentcollector',
-				loadChildren: () =>
-					import(
-						'./consent-collector/consent-collector.module'
-					).then((m) => m.ConsentCollectorModule)
-			}
-		]
+		loadChildren: () =>
+			import(
+				'./consent-collector/consent-collector.module'
+			).then((m) => m.ConsentCollectorModule)
+	
 	},
 ];
 

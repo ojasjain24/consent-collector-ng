@@ -1,214 +1,193 @@
 <div
-	class="container mt-3"
-	style="box-shadow: 0 0 3px 0px gray !important; max-width: 900px"
+  class="container mt-3"
+  style="box-shadow: 0 0 3px 0px gray !important; max-width: 900px"
 >
-	<div class="row"></div>
-	<div class="row">
-		<div class="col-lg-6 col-12 text-center">
-			<div class="card w-100 my-4" style="width: 18rem">
-				<div
-					class="card-body text-start"
-					style="border-top: 3px solid red"
-				>
-					<h5 class="card-title mb-3 text-center">
-						<b> AIP Details</b>
-					</h5>
-					<hr />
-					<p class="card-text">
-						<!-- <label for="" style="font-size: 14px;">AIP ID:</label> <span id="sumAIPid"></span> <br> -->
-						<label for="" style="font-size: 14px">AIP Name:</label>
-						<span id="sumAIPname"
-							>{{consentCollectorArtifactValue.aipName}}</span
-						>
-						<br />
-						<label for="" style="font-size: 14px">AIP Email:</label>
-						<span id="sumAIPmail"
-							>{{consentCollectorArtifactValue.aipEmail}}</span
-						>
-						<br />
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-6 col-12 text-center">
-			<div class="card w-100 my-4" style="width: 18rem">
-				<div
-					class="card-body text-start"
-					style="border-top: 3px solid #0b457f"
-				>
-					<h5 class="card-title mb-3 text-center">
-						<b> Data Principal Details</b>
-					</h5>
-					<hr />
-					<p class="card-text">
-						<label for="" style="font-size: 14px"
-							>Data Principal ID:</label
-						>
-						<span id="sumDPid"
-							>{{consentCollectorArtifactValue.dpID}}</span
-						>
-						<br />
-						<label for="" style="font-size: 14px"
-							>Data Principal Name:</label
-						>
-						<span id="sumDPname"
-							>{{consentCollectorArtifactValue.dpName}}</span
-						>
-						<br />
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-6 col-12 text-center">
-			<div class="card w-100 my-4" style="width: 18rem">
-				<div
-					class="card-body text-start"
-					style="border-top: 3px solid #0a9"
-				>
-					<h5 class="card-title mb-3 text-center">
-						<b> Additional Details</b>
-					</h5>
-					<hr />
-					<p class="card-text">
-						<label for="" style="font-size: 14px">Item ID:</label>
-						<span id="sumItemId"
-							>{{consentCollectorArtifactValue.itemInp}}</span
-						>
-						<br />
-						<label for="" style="font-size: 14px">Item Type:</label>
-						<span id="sumItemType"
-							>{{consentCollectorArtifactValue.itemType[0].item_text}}</span
-						>
-						<br />
-						<label for="" style="font-size: 14px"
-							>Artifact Expiry:</label
-						><span id="sumExpiry"
-							>{{consentCollectorArtifactValue.dateInput}}</span
-						><br />
-						<label for="" style="font-size: 14px">Purposes:</label>
-						<span
-							id="sumPurpose"
-							class="purpose-text"
-							*ngFor="let purpose of consentCollectorArtifactValue.purpose"
-							>{{purpose.item_text}}{{", "}}</span
-						>
-						<br />
-					</p>
-				</div>
-			</div>
-		</div>
-		<div id="aiusec" class="col-lg-6 col-12 text-center">
-			<div class="card w-100 my-4" style="width: 18rem">
-				<div
-					class="card-body text-start"
-					style="border-top: 3px solid #ae53e0"
-				>
-					<h5 class="card-title mb-3 text-center">
-						<b> AIU Details</b>
-					</h5>
-					<hr />
-					<p class="card-text">
-						<!-- <label for="" style="font-size: 14px;">AIU ID:</label> <span id="sumAIUid"></span> <br> -->
-						<label for="" style="font-size: 14px">AIU Name:</label>
-						<span id="sumAIUname"
-							>{{consentCollectorArtifactValue.aiuName}}</span
-						>
-						<br />
-						<label for="" style="font-size: 14px">AIU Email:</label>
-						<span id="sumAIUmail"
-							>{{consentCollectorArtifactValue.aiuEmail}}</span
-						>
-						<br />
-					</p>
-				</div>
-			</div>
-		</div>
+  <div class="row">
+	<a class="mt-3" routerLink="/">
+	<img style="width: 15px; height: 15px;" src="assets/back.svg" />
+</a>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-12 text-center">
+      <div class="card w-100 my-4" style="width: 18rem">
+        <div class="card-body text-start" style="border-top: 3px solid red">
+          <h5 class="card-title mb-3 text-center">
+            <b> AIP Details</b>
+          </h5>
+          <hr />
+          <p class="card-text">
+            <!-- <label for="" style="font-size: 14px;">AIP ID:</label> <span id="sumAIPid"></span> <br> -->
+            <label for="" style="font-size: 14px">AIP Name:</label>
+            <span id="sumAIPname">{{
+              consentCollectorArtifactValue.aipName
+            }}</span>
+            <br />
+            <label for="" style="font-size: 14px">AIP Email:</label>
+            <span id="sumAIPmail">{{
+              consentCollectorArtifactValue.aipEmail
+            }}</span>
+            <br />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-12 text-center">
+      <div class="card w-100 my-4" style="width: 18rem">
+        <div class="card-body text-start" style="border-top: 3px solid #0b457f">
+          <h5 class="card-title mb-3 text-center">
+            <b> Data Principal Details</b>
+          </h5>
+          <hr />
+          <p class="card-text">
+            <label for="" style="font-size: 14px">Data Principal ID:</label>
+            <span id="sumDPid">{{ consentCollectorArtifactValue.dpID }}</span>
+            <br />
+            <label for="" style="font-size: 14px">Data Principal Name:</label>
+            <span id="sumDPname">{{
+              consentCollectorArtifactValue.dpName
+            }}</span>
+            <br />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-12 text-center">
+      <div class="card w-100 my-4" style="width: 18rem">
+        <div class="card-body text-start" style="border-top: 3px solid #0a9">
+          <h5 class="card-title mb-3 text-center">
+            <b> Additional Details</b>
+          </h5>
+          <hr />
+          <p class="card-text">
+            <label for="" style="font-size: 14px">Item ID:</label>
+            <span id="sumItemId">{{
+              consentCollectorArtifactValue.itemInp[0].item_id
+            }}</span>
+            <br />
+            <label for="" style="font-size: 14px">Item Type:</label>
+            <span id="sumItemType">{{
+              consentCollectorArtifactValue.itemType[0].item_text
+            }}</span>
+            <br />
+            <label for="" style="font-size: 14px">Artifact Expiry:</label
+            ><span id="sumExpiry">{{
+              consentCollectorArtifactValue.dateInput
+            }}</span
+            ><br />
+            <label for="" style="font-size: 14px">Purposes:</label>
+            <span
+              id="sumPurpose"
+              class="purpose-text"
+              *ngFor="let purpose of consentCollectorArtifactValue.purpose"
+              >{{ purpose.item_text }}{{ ", " }}</span
+            >
+            <br />
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="aiusec" class="col-lg-6 col-12 text-center">
+      <div class="card w-100 my-4" style="width: 18rem">
+        <div class="card-body text-start" style="border-top: 3px solid #ae53e0">
+          <h5 class="card-title mb-3 text-center">
+            <b> AIU Details</b>
+          </h5>
+          <hr />
+          <p class="card-text">
+            <!-- <label for="" style="font-size: 14px;">AIU ID:</label> <span id="sumAIUid"></span> <br> -->
+            <label for="" style="font-size: 14px">AIU Name:</label>
+            <span id="sumAIUname">{{
+              consentCollectorArtifactValue.aiuName
+            }}</span>
+            <br />
+            <label for="" style="font-size: 14px">AIU Email:</label>
+            <span id="sumAIUmail">{{
+              consentCollectorArtifactValue.aiuEmail
+            }}</span>
+            <br />
+          </p>
+        </div>
+      </div>
+    </div>
 
-		<div class="col-12 text-end">
-			<a
-				class="btn btn-primary mx-2 mb-4 submit"
-				id="edtLink"
-				style="background-color: #0a9; border: 0"
-				type="button"
-				(click)="editDetails()"
-				>Edit</a
-			>
-			<a
-				id="downloadJSON"
-				class="btn btn-primary mb-4 submit"
-				style="background-color: #0a9; border: 0"
-				type="button"
-				(click)="downloadJson(consentCollectorArtifactValue)"
-				>Download JSON</a
-			>
-		</div>
+    <div class="col-12 text-end">
+      <a
+        class="btn btn-primary mx-2 mb-4 submit"
+        id="edtLink"
+        style="background-color: #0a9; border: 0"
+        type="button"
+        (click)="editDetails()"
+        >Edit</a
+      >
+      <a
+        id="downloadJSON"
+        class="btn btn-primary mb-4 submit"
+        style="background-color: #0a9; border: 0"
+        type="button"
+        (click)="downloadJson(consentCollectorArtifactValue)"
+        >Download JSON</a
+      >
+    </div>
 
-		<div class="instr">
-			<h3 style="font-weight: bold">Signing the certificate</h3>
-			<p style="margin: 0; font-weight: 200">Follow these steps:</p>
-			<ol type="1">
-				<li>
-					Download the JSon file in the same folder as your private
-					key.
-				</li>
-				<li>Open Command prompt/terminal in that window.</li>
-				<li>
-					Copy and paste the following command to sign the certificate
-					digitally.
-				</li>
-			</ol>
-			<div id="command">
-				openssl dgst -sign pvt.key -sha256 -out signature.bin data.json
-				<span>
-					<img
-						type="button"
-						style="width: 15px; height: 15px"
-						src="assets/copy.svg"
-						alt="Copy"
-						(click)="copyMessage('openssl dgst -sign pvt.key -sha256 -out signature.bin data.json')"
-					/>
-				</span>
-			</div>
-			<br />
-			<div class="control-buttons">
-				<input
-					name="Select KEY"
-					type="file"
-					(change)="onUpload('key',$event)"
-					#keyFileInput
-					accept=".key,.pem"
-				/>
-				<input
-					name="Select CERTIFICATE"
-					type="file"
-					(change)="onUpload('cert',$event)"
-					#certificateFileInput
-					accept=".crt,.pem"
-				/>
-				<a>OR</a>
-				<input
-					name="Select Pfx"
-					type="file"
-					(change)="onUpload('pfx',$event)"
-					#pfxFileInput
-					accept=".pfx"
-				/>
-				<br />
-				<br />
-			</div>
-		</div>
-		<div id="sign-block">
-			<button *ngIf="!signEnabled" (click)="verify()" id="sgn">
-				Sign
-			</button>
-			<button
-				*ngIf="signEnabled"
-				(click)="verify()"
-				id="sgn"
-				style="background-color: 0a9; color: white"
+    <div class="instr">
+      <div class="control-buttons">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex justify-content-between align-items-center">
+            <input
+			[ngClass]="{'disabled': selectedPfxFileName}"
+              class="p-0 mx-4"
+              type="file"
+              (change)="onUpload('key', $event)"
+              #keyFileInput
+              accept=".key,.pem"
+            />
+			
+			<span *ngIf="selectedkeyFileName"
 			>
-				Sign
-			</button>
-		</div>
-	</div>
+			<img style="width: 15px; height: 15px;" (click)="delete('key')" src="assets/close.png" />
+		</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <input
+			[ngClass]="{'disabled': selectedPfxFileName}"
+              class="p-0  mx-4"
+              type="file"
+              (change)="onUpload('cert', $event)"
+              #certificateFileInput
+              accept=".crt,.pem"
+            />
+			<img style="width: 15px; height: 15px;" *ngIf="selectedCertFileName" (click)="delete('cert')" src="assets/close.png" />
+
+          </div>
+        </div>
+        <p class="my-4">OR</p>
+
+        <div class="d-flex justify-content-between align-items-center">
+          <input
+		  [ngClass]="{'disabled': selectedCertFileName || selectedkeyFileName}"
+            class="p-0"
+            type="file"
+            (change)="onUpload('pfx', $event)"
+            #pfxFileInput
+            accept=".pfx"
+          />
+		  <img style="width: 15px; height: 15px;" *ngIf="selectedPfxFileName" (click)="delete('pfx')" src="assets/close.png" />
+
+        </div>
+        <br />
+        <br />
+      </div>
+    </div>
+    <div id="sign-block">
+      <button *ngIf="!signEnabled" (click)="verify()" id="sgn">Sign</button>
+      <button
+        *ngIf="signEnabled"
+        (click)="verify()"
+        id="sgn"
+        style="background-color: 0a9; color: white"
+      >
+        Sign
+      </button>
+    </div>
+  </div>
 </div>

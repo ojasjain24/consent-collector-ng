@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as forge from 'node-forge';
-// import {KJUR} from 'jsrsasign';
+import {KJUR} from 'jsrsasign';
 
 @Component({
 	selector: 'app-summary',
@@ -15,9 +15,10 @@ export class SummaryComponent implements OnInit {
 	@ViewChild('certificateFileInput') certificateFileInput: any;
 	@ViewChild('keyFile') keyFile: any;
 	@ViewChild('keyFileInput') keyFileInput: any;
+
 	signEnabled: any = false;
 	userConsent: any;
-	KJUR = require('jsrsasign');
+	// KJUR = require('jsrsasign');
 	newcms1dmp: any;
 	newcms1: any;
 	parsedInfo: any;
@@ -25,6 +26,9 @@ export class SummaryComponent implements OnInit {
 	cades_t_1: any;
 	cades_t_1dmp: any;
 	pem: any;
+selectedkeyFileName: any;
+selectedCertFileName: any;
+selectedPfxFileName: any;
 
 	constructor(
 		public router: Router
@@ -86,7 +90,36 @@ export class SummaryComponent implements OnInit {
 		}
 	}
 
+	delete(type: any) {
+			if (type === 'pfx') {
+				this.selectedPfxFileName = null;
+				localStorage.removeItem('extractedCertificate');
+				localStorage.removeItem('extractedPrivateKey');
+				this.pfxFileInput.nativeElement.value=null;
+				}
+			
+			
+			if (type === 'key') {
+				this.selectedkeyFileName = null;
+				localStorage.removeItem('extractedPrivateKey');
+				
+				this.keyFileInput.nativeElement.value=null;
+			}
+			if (type === 'cert') {
+				this.selectedCertFileName = null;
+				localStorage.removeItem('extractedCertificate');
+				this.certificateFileInput.nativeElement.value=null;
+			}
+
+			this.enableSign();
+		
+	}
+
 	handleKeyFileSelect(event: any) {
+		
+		this.selectedPfxFileName=null;
+		this.selectedkeyFileName = event.target.files[0].name;
+
 		const selectedFile = event.target.files;
 		if (!selectedFile) {
 			return;
@@ -94,8 +127,9 @@ export class SummaryComponent implements OnInit {
 
 		const reader = new FileReader();
 		reader.onload = (event: any) => {
+			console.log(event.target);
 			const privateKeyPEM = event.target.result;
-			sessionStorage.setItem('extractedPrivateKey', privateKeyPEM);
+			localStorage.setItem('extractedPrivateKey', privateKeyPEM);
 			this.enableSign();
 			// this.keyFile.nativeElement.innerText=this.keyFileInput.nativeElement.value.split('\\').pop();
 		};
@@ -106,14 +140,21 @@ export class SummaryComponent implements OnInit {
 
 	enableSign() {
 		if (
-			sessionStorage.getItem('extractedCertificate') != null &&
-			sessionStorage.getItem('extractedPrivateKey') != null
+			localStorage.getItem('extractedCertificate') != null &&
+			localStorage.getItem('extractedPrivateKey') != null
 		) {
 			this.signEnabled = true;
+		}
+		else{
+			this.signEnabled=false;
 		}
 	}
 
 	handleCertFileSelect(event: any) {
+		
+		this.selectedPfxFileName=null;
+		this.selectedCertFileName = event.target.files[0].name;
+
 		const selectedFile = event.target.files;
 		if (!selectedFile) {
 			return;
@@ -122,7 +163,7 @@ export class SummaryComponent implements OnInit {
 		reader.onload = (event: any) => {
 			const certificatePEM = event.target.result;
 
-			sessionStorage.setItem('extractedCertificate', certificatePEM);
+			localStorage.setItem('extractedCertificate', certificatePEM);
 			this.enableSign();
 			// this.certificateFile.nativeElement.innerText=this.certificateFileInput.nativeElement.value.split('\\').pop();
 		};
@@ -132,8 +173,12 @@ export class SummaryComponent implements OnInit {
 	}
 
 	handlePfxFileSelect(event: any) {
+		
+		this.selectedCertFileName=null;
+		this.selectedkeyFileName=null;
+		this.selectedPfxFileName = event.target.files[0].name;
 		const selectedFile = event.target.files;
-		//console.log('PFX : ' + event.target);
+		console.log('PFX : ' + event.target);
 		if (!selectedFile) {
 			return;
 		}
@@ -142,17 +187,17 @@ export class SummaryComponent implements OnInit {
 	}
 
 	uploadPfx(selectedFile: any) {
-		// //console.log("FILEINPUT : "+selectedFile);
+		//console.log("FILEINPUT : "+selectedFile);
 
 		if (selectedFile.length > 0) {
 			const file: Blob = selectedFile[0];
 			const reader = new FileReader();
-			//console.log('EXTRACT CERTIFICATE TO BE CALLED' + typeof file);
+			console.log('EXTRACT CERTIFICATE TO BE CALLED' + typeof file);
 
 			reader.onload = (event: any) => {
 				const pfxData = new Uint8Array(event.target.result);
 				this.extractCertificates(pfxData);
-				//console.log('EXTRACT CERTIFICATE CALLED');
+				console.log('EXTRACT CERTIFICATE CALLED');
 			};
 			reader.readAsArrayBuffer(file);
 		} else {
@@ -162,7 +207,7 @@ export class SummaryComponent implements OnInit {
 
 	extractCertificates(pfxData: any) {
 		let pemPrivateKey;
-		//console.log('EXTRACT BEGIN');
+		console.log('EXTRACT BEGIN');
 		try {
 			const password: any = prompt(
 				'Enter the password for the PKCS#12 file:'
@@ -174,27 +219,32 @@ export class SummaryComponent implements OnInit {
 			const certificateBags = p12.getBags({
 				bagType: forge.pki.oids['certBag']
 			});
+			console.log(certificateBags);
+
 			const certificates = certificateBags[forge.pki.oids['certBag']].map(
 				(bag: any) => forge.pki.certificateToPem(bag.cert)
 			);
 
+			console.log(certificates);
 			const privateKeyBag = p12.getBags({
 				bagType: forge.pki.oids['pkcs8ShroudedKeyBag']
 			});
 			const privateKey =
 				privateKeyBag[forge.pki.oids['pkcs8ShroudedKeyBag']][0].key;
+			console.log(privateKey);
 
 			pemPrivateKey = forge.pki.privateKeyToPem(privateKey);
+			console.log(pemPrivateKey);
 
 			console.log('EXTRACT DONE');
-			sessionStorage.setItem('extractedPrivateKey', pemPrivateKey);
-			sessionStorage.setItem('extractedCertificate', certificates[0]);
+			localStorage.setItem('extractedPrivateKey', pemPrivateKey);
+			localStorage.setItem('extractedCertificate', certificates[0]);
 			this.enableSign();
 		} catch (error) {
-			// console.error(
-			// 	'Error extracting certificates and private key:',
-			// 	error
-			// );
+			console.error(
+				'Error extracting certificates and private key:',
+				error
+			);
 		}
 	}
 
@@ -212,8 +262,8 @@ export class SummaryComponent implements OnInit {
 
 
 	verify() {
-		const certificateFile = sessionStorage.getItem('extractedCertificate');
-		const keyFile = sessionStorage.getItem('extractedPrivateKey');
+		const certificateFile = localStorage.getItem('extractedCertificate');
+		const keyFile = localStorage.getItem('extractedPrivateKey');
 		if (!certificateFile || !keyFile) {
 			alert('Please select the certificate and key');
 			return;
@@ -225,8 +275,8 @@ export class SummaryComponent implements OnInit {
 	 * signing using jsrsasign library CAdES
 	 */
 	sign() {
-		const certPEM = sessionStorage.getItem('extractedCertificate');
-		const prvKeyPEM = sessionStorage.getItem('extractedPrivateKey');
+		const certPEM = localStorage.getItem('extractedCertificate');
+		const prvKeyPEM = localStorage.getItem('extractedPrivateKey');
 
 		const paramOrg = {
 			version: 1,
@@ -271,15 +321,16 @@ export class SummaryComponent implements OnInit {
 		param.econtent.content = { str: this.userConsent };
 
 		const sattrs = param.sinfos[0].sattrs.array;
-
+		
 		sattrs.push({ attr: 'signingTime' });
 		sattrs.push({ attr: 'signingCertificateV2', array: [certPEM] });
 		console.log('BEFORE SIGN '+ sattrs + "\n user consent " + this.userConsent);
-		const sd = this.KJUR.asn1.cms.SignedData(param);
+		const sd = new KJUR.asn1.cms.SignedData(param);
+		// sd.addCertificatesByPEM(param);
 		console.log('AFTER SIGN '+sd);
 
 		const hCmsSignedData = sd.getContentInfoEncodedHex();
-		const pem: any = new this.KJUR.asn1.ASN1Util.getPEMStringFromHex(
+		const pem = KJUR.asn1.ASN1Util.getPEMStringFromHex(
 			hCmsSignedData,
 			'CMS'
 		);
@@ -305,6 +356,6 @@ export class SummaryComponent implements OnInit {
 		downloadLink.click();
 
 		document.body.removeChild(downloadLink);
-		sessionStorage.clear();
+		localStorage.clear();
 	}
 }
