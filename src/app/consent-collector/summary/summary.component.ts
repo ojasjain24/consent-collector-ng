@@ -50,7 +50,7 @@ selectedPfxFileName: any;
 	}
 
 	editDetails() {
-		this.router.navigate([`/consentcollector`]);
+		this.router.navigate([`/`]);
 	}
 
 	downloadJson(myJson: any) {
