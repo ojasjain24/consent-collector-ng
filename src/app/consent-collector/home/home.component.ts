@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
           )
         : null;
 	if(consentCollectorArtifactValue){
-		console.log(this.consentCollectorArtifact);
+		// console.log(this.consentCollectorArtifact);
 		if(
 			!this.consentCollectorArtifact?.aipName){
 				this.activeTab=1;
@@ -142,14 +142,10 @@ export class HomeComponent implements OnInit {
     this.submitClicked = true;
     if (this.validate()) {
       const consentCollectorArtifactValue: any = {
-        aipName:
-          this.activeTab == 0
-            ? this.consentCollectorArtifact.controls.aipName.value
-            : '',
-        aipEmail:
-          this.activeTab == 0
-            ? this.consentCollectorArtifact.controls.aipEmail.value
-            : '',
+        aipName: this.consentCollectorArtifact.controls.aipName.value
+            ,
+        aipEmail:this.consentCollectorArtifact.controls.aipEmail.value
+            ,
         dpID: this.consentCollectorArtifact.controls.dpID.value,
         dpName: this.consentCollectorArtifact.controls.dpName.value,
         dateInput: this.consentCollectorArtifact.controls.dateInput.value,
@@ -158,6 +154,7 @@ export class HomeComponent implements OnInit {
         purpose: this.consentCollectorArtifact.controls.purpose.value,
         aiuName: this.consentCollectorArtifact.controls.aiuName.value,
         aiuEmail: this.consentCollectorArtifact.controls.aiuEmail.value,
+        activeTab: this.activeTab
       };
       localStorage.setItem(
         'consentCollectorArtifactValue',
@@ -215,7 +212,7 @@ export class HomeComponent implements OnInit {
         this.itemIdDropdownList = (data as any).results.map((e:any)=>{
 			return {item_id : e.id, item_text : e.name};
 		});
-        console.log('API Data:', this.itemIdDropdownList);
+        // console.log('API Data:', this.itemIdDropdownList);
       },
       error: (error) => {
         console.error('Error fetching API data:', error);

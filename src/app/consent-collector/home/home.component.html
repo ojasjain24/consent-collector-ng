@@ -518,6 +518,97 @@
             >
           </div>
         </div>
+
+        <div *ngIf="activeTab == 1">
+          <div class="row aip-details w-100 mt-4">
+            <div class="col-lg-6 col-12">
+              <h1 class="ribbon">AIP Details</h1>
+            </div>
+            <div
+              class="cols justify-content-lg-end d-flex"
+              style="font-size: 12px"
+            >
+              <span class="asterisk">* Required Fields</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-12">
+              <div class="input-group mt-4">
+                <span class="input-group-text">
+                  AIP Name
+                  <span class="asterisk">*</span>
+                </span>
+                <input
+                  autofocus
+                  formControlName="aipName"
+                  type="text"
+                  class="form-control"
+                  id="aipName"
+                />
+              </div>
+              <span
+                *ngIf="
+                  ((this.consentCollectorArtifact.controls.aipName.touched ||
+                    submitClicked) &&
+                    this.consentCollectorArtifact.controls.aipName.status ===
+                      'INVALID') ||
+                  this.consentCollectorArtifact.controls.aipName.value === ''
+                "
+                class="asterisk"
+                >This Field Can't be Empty</span
+              >
+
+              <span
+                *ngIf="
+                  (this.consentCollectorArtifact.controls.aipName.touched ||
+                    submitClicked) &&
+                  this.consentCollectorArtifact.controls.aipName.status ===
+                    'INVALID' &&
+                  this.consentCollectorArtifact.controls.aipName.value !== ''
+                "
+                class="asterisk"
+                >Invalid</span
+              >
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <div class="input-group mt-4">
+                <span class="input-group-text">
+                  AIP Email
+                  <span class="asterisk">*</span>
+                </span>
+                <input
+                  formControlName="aipEmail"
+                  type="email"
+                  class="form-control emails"
+                  id="aipEmail"
+                  pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                />
+              </div>
+              <span
+                *ngIf="
+                  (this.consentCollectorArtifact.controls.aipEmail.touched ||
+                    submitClicked) &&
+                  this.consentCollectorArtifact.controls.aipEmail.value === ''
+                "
+                class="asterisk"
+                >This field can't be empty</span
+              >
+
+              <span
+                *ngIf="
+                  (this.consentCollectorArtifact.controls.aipEmail.touched ||
+                    submitClicked) &&
+                  this.consentCollectorArtifact.controls.aipEmail.status ===
+                    'INVALID' &&
+                  this.consentCollectorArtifact.controls.aipEmail.value !== ''
+                "
+                class="asterisk"
+                >Email address not valid</span
+              >
+            </div>
+          </div>
+        </div>
         <span
           *ngIf="submitClicked && !validate()"
           class="asterisk text-center mt-2"
